@@ -12,13 +12,19 @@ const date = (new Date()).toISOString();
 const titleText = pkg.description;
 
 (async () => {
+  // @see https://www.netlify.com/docs/continuous-deployment/#environment-variables
+  const env = ['BRANCH', 'CONTEXT', 'DEPLOY_ID', 'URL', 'DEPLOY_PRIME_URL', 'DEPLOY_URL', 'HOME', 'NETLIFY_BUILD_BASE']
+    .reduce((obj, prop) => ({
+      ...obj,
+      [prop]: (process.env.hasOwnProperty(prop) ? process.env[prop] : null),
+    }), {});
   let html = `<!doctype html>
 <html lang=ja>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=format-detection content="telephone=no,email=no,address=no">
 <title>${titleText}</title>
-<h1>${titleText}</h1>`;
+<h1>${titleText}</h1><pre>${JSON.stringify({ date, env }, null, 2)}</pre>`;
 
   // @see https://www.netlify.com/docs/build-gotchas/#build-cache
   // @see https://github.com/netlify/build-image/blob/xenial/run-build-functions.sh#L11
@@ -35,15 +41,7 @@ const titleText = pkg.description;
     html += `<h2>${cache._pathToFile}</h2><pre>${JSON.stringify(cache.all(), null, 2)}</pre>`;
 
     cache.setKey('date', date);
-    cache.setKey(
-      'env',
-      // @see https://www.netlify.com/docs/continuous-deployment/#environment-variables
-      ['BRANCH', 'CONTEXT', 'DEPLOY_ID', 'URL', 'DEPLOY_PRIME_URL', 'DEPLOY_URL', 'HOME', 'NETLIFY_BUILD_BASE']
-        .reduce((obj, prop) => ({
-          ...obj,
-          [prop]: (process.env.hasOwnProperty(prop) ? process.env[prop] : null),
-        }), {})
-    );
+    cache.setKey('env', env);
 
     cache.save();
   }
