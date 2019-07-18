@@ -26,7 +26,7 @@ const titleText = pkg.description;
   const cacheList = [
     flatCache.load('cache1'),
     flatCache.load('cache2', 'cache'),
-    process.env.NETLIFY_BUILD_BASE ? flatCache.load('cache2', path.join(process.env.NETLIFY_BUILD_BASE, 'cache')) : null,
+    process.env.NETLIFY_BUILD_BASE ? flatCache.load('cache3', path.join(process.env.NETLIFY_BUILD_BASE, 'cache')) : null,
   ];
 
   for (const cache of cacheList) {
