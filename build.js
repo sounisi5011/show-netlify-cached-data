@@ -41,7 +41,7 @@ const titleText = pkg.description;
       ['BRANCH', 'CONTEXT', 'DEPLOY_ID', 'URL', 'DEPLOY_PRIME_URL', 'DEPLOY_URL', 'HOME', 'NETLIFY_BUILD_BASE']
         .reduce((obj, prop) => ({
           ...obj,
-          [prop]: (obj.hasOwnProperty(prop) ? process.env[prop] : null),
+          [prop]: (process.env.hasOwnProperty(prop) ? process.env[prop] : null),
         }), {})
     );
 
