@@ -1,0 +1,19 @@
+{
+  "name": "show-netlify-cached-data",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Netlifyのキャッシュ済データを確認する",
+  "homepage": "https://github.com/sounisi5011/show-netlify-cached-data#readme",
+  "bugs": {
+    "url": "https://github.com/sounisi5011/show-netlify-cached-data/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sounisi5011/show-netlify-cached-data.git"
+  },
+  "license": "MIT",
+  "author": "sounisi5011",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
