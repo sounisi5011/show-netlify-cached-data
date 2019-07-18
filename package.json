@@ -1,0 +1,25 @@
+{
+  "name": "show-netlify-cached-data",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Netlifyのキャッシュ済データを確認する",
+  "homepage": "https://github.com/sounisi5011/show-netlify-cached-data#readme",
+  "bugs": {
+    "url": "https://github.com/sounisi5011/show-netlify-cached-data/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sounisi5011/show-netlify-cached-data.git"
+  },
+  "license": "MIT",
+  "author": "sounisi5011",
+  "scripts": {
+    "prebuild": "make-dir dist && del ./dist/*",
+    "build": "node ./build.js"
+  },
+  "dependencies": {
+    "del-cli": "^2.0.0",
+    "flat-cache": "^2.0.1",
+    "make-dir-cli": "^2.0.0"
+  }
+}
