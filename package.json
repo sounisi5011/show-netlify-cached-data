@@ -15,5 +15,10 @@
   "author": "sounisi5011",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "del-cli": "^2.0.0",
+    "flat-cache": "^2.0.1",
+    "make-dir-cli": "^2.0.0"
   }
 }
