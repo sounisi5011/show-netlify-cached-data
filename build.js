@@ -13,7 +13,7 @@ const titleText = pkg.description;
 
 (async () => {
   // @see https://www.netlify.com/docs/continuous-deployment/#environment-variables
-  const env = ['BRANCH', 'CONTEXT', 'DEPLOY_ID', 'URL', 'DEPLOY_PRIME_URL', 'DEPLOY_URL', 'HOME', 'NETLIFY_BUILD_BASE']
+  const env = ['BRANCH', 'COMMIT_REF', 'CONTEXT', 'DEPLOY_ID', 'URL', 'DEPLOY_PRIME_URL', 'DEPLOY_URL', 'HOME', 'NETLIFY_BUILD_BASE']
     .reduce((obj, prop) => ({
       ...obj,
       [prop]: (process.env.hasOwnProperty(prop) ? process.env[prop] : null),
