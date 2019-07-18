@@ -17,6 +17,18 @@
     "prebuild": "make-dir dist && del ./dist/*",
     "build": "node ./build.js"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "package.json": [
+      "prettier-package-json --write",
+      "sort-package-json",
+      "git add"
+    ]
+  },
   "dependencies": {
     "del-cli": "^2.0.0",
     "flat-cache": "^2.0.1",
