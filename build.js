@@ -3,6 +3,7 @@ const path = require('path');
 const util = require('util');
 
 const flatCache = require('flat-cache');
+const hostedGitInfo = require('hosted-git-info');
 
 const pkg = require('./package.json');
 
@@ -10,6 +11,12 @@ const writeFile = util.promisify(fs.writeFile);
 
 const date = (new Date()).toISOString();
 const titleText = pkg.description;
+const repoURL = hostedGitInfo.fromUrl(
+    typeof pkg.repository === 'string'
+    ? pkg.repository
+    : pkg.repository.url
+  )
+  .browse();
 
 (async () => {
   // @see https://www.netlify.com/docs/continuous-deployment/#environment-variables
@@ -45,6 +52,8 @@ const titleText = pkg.description;
 
     cache.save();
   }
+
+  html += `<h2>Repository</h2><a href="${repoURL}">${repoURL}</a>`;
 
   await writeFile('./dist/index.html', html);
 })();
