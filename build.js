@@ -21,7 +21,9 @@ const repoURL = process.env.REPOSITORY_URL || (
 );
 
 (async () => {
-  // @see https://www.netlify.com/docs/continuous-deployment/#environment-variables
+  // @see https://docs.netlify.com/configure-builds/environment-variables/#build-metadata
+  // @see https://docs.netlify.com/configure-builds/environment-variables/#git-metadata
+  // @see https://docs.netlify.com/configure-builds/environment-variables/#deploy-urls-and-metadata
   const env = ['BRANCH', 'COMMIT_REF', 'CONTEXT', 'DEPLOY_ID', 'URL', 'DEPLOY_PRIME_URL', 'DEPLOY_URL', 'HOME', 'NETLIFY_BUILD_BASE']
     .reduce((obj, prop) => ({
       ...obj,
@@ -35,9 +37,9 @@ const repoURL = process.env.REPOSITORY_URL || (
 <title>${titleText}</title>
 <h1>${titleText}</h1><pre>${JSON.stringify({ date, env }, null, 2)}</pre>`;
 
-  // @see https://www.netlify.com/docs/build-gotchas/#build-cache
-  // @see https://github.com/netlify/build-image/blob/xenial/run-build-functions.sh#L11
-  // @see https://github.com/netlify/build-image/blob/trusty/run-build-functions.sh#L11
+  // @see https://docs.netlify.com/configure-builds/manage-dependencies/#dependency-cache
+  // @see https://github.com/netlify/build-image/blob/3dc02886caa0ae907764cdad9295a17b7c486c95/run-build-functions.sh#L11
+  // @see https://github.com/netlify/build-image/blob/450c24b893036c2813a0b0d0a2a05bcdd81935a4/run-build-functions.sh#L11
   const cacheList = [
     flatCache.load('cache1'),
     flatCache.load('cache2', 'cache'),
