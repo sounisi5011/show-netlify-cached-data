@@ -11,12 +11,14 @@ const writeFile = util.promisify(fs.writeFile);
 
 const date = (new Date()).toISOString();
 const titleText = pkg.description;
-const repoURL = hostedGitInfo.fromUrl(
+const repoURL = process.env.REPOSITORY_URL || (
+  hostedGitInfo.fromUrl(
     typeof pkg.repository === 'string'
     ? pkg.repository
     : pkg.repository.url
   )
-  .browse();
+  .browse()
+);
 
 (async () => {
   // @see https://www.netlify.com/docs/continuous-deployment/#environment-variables
