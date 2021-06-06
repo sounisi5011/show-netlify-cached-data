@@ -14,7 +14,7 @@
   "license": "MIT",
   "author": "sounisi5011",
   "scripts": {
-    "prebuild": "make-dir dist && rimraf ./dist/*",
+    "prebuild": "rimraf ./dist/*",
     "build": "node ./build.js"
   },
   "husky": {
@@ -32,7 +32,7 @@
   "dependencies": {
     "flat-cache": "^2.0.1",
     "hosted-git-info": "^3.0.5",
-    "make-dir-cli": "^3.0.0",
+    "make-dir": "^3.1.0",
     "rimraf": "^3.0.2"
   },
   "devDependencies": {

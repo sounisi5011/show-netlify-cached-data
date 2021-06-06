@@ -4,6 +4,7 @@ const util = require('util');
 
 const flatCache = require('flat-cache');
 const hostedGitInfo = require('hosted-git-info');
+const makeDir = require('make-dir');
 
 const pkg = require('./package.json');
 
@@ -59,5 +60,6 @@ const repoURL = process.env.REPOSITORY_URL || (
 
   html += `<h2>Repository</h2><a href="${repoURL}">${repoURL}</a>`;
 
+  await makeDir('./dist');
   await writeFile('./dist/index.html', html);
 })();
