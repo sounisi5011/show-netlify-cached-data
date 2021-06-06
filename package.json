@@ -14,7 +14,6 @@
   "license": "MIT",
   "author": "sounisi5011",
   "scripts": {
-    "prebuild": "make-dir dist && del ./dist/*",
     "build": "node ./build.js"
   },
   "husky": {
@@ -30,10 +29,10 @@
     ]
   },
   "dependencies": {
-    "del-cli": "^2.0.0",
     "flat-cache": "^2.0.1",
     "hosted-git-info": "^3.0.5",
-    "make-dir-cli": "^2.0.0"
+    "make-dir": "^3.1.0",
+    "rimraf": "^3.0.2"
   },
   "devDependencies": {
     "husky": "^3.0.0",

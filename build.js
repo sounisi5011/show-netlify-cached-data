@@ -4,10 +4,13 @@ const util = require('util');
 
 const flatCache = require('flat-cache');
 const hostedGitInfo = require('hosted-git-info');
+const makeDir = require('make-dir');
+const rimraf = require('rimraf');
 
 const pkg = require('./package.json');
 
 const writeFile = util.promisify(fs.writeFile);
+const rimrafAsync = util.promisify(rimraf);
 
 const date = (new Date()).toISOString();
 const titleText = pkg.description;
@@ -59,5 +62,7 @@ const repoURL = process.env.REPOSITORY_URL || (
 
   html += `<h2>Repository</h2><a href="${repoURL}">${repoURL}</a>`;
 
+  await makeDir('./dist');
+  await rimrafAsync('./dist/*');
   await writeFile('./dist/index.html', html);
 })();
