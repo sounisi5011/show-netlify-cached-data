@@ -14,7 +14,6 @@
   "license": "MIT",
   "author": "sounisi5011",
   "scripts": {
-    "prebuild": "rimraf ./dist/*",
     "build": "node ./build.js"
   },
   "husky": {
