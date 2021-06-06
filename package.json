@@ -40,8 +40,5 @@
     "lint-staged": "^9.2.0",
     "prettier-package-json": "^2.1.0",
     "sort-package-json": "^1.22.1"
-  },
-  "engines": {
-    "node": ">=12.17"
   }
 }
